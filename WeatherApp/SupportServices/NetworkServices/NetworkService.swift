@@ -6,13 +6,15 @@
 //
 
 import Foundation
- 
+
+// MARK: Network Service Protocol
 protocol NetworkServiceProtocol{
     func request(urlSring: String, completion: @escaping (Data?, Error?)-> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
     
+    // MARK: Request func
     func request(urlSring: String, completion: @escaping (Data?, Error?) -> Void) {
         guard let url = URL(string: urlSring) else {
             return
@@ -22,6 +24,7 @@ class NetworkService: NetworkServiceProtocol {
         task.resume()
     }
     
+    // MARK: Private func create data task
     private func createDataTask(from requst: URLRequest, completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
         return URLSession.shared.dataTask(with: requst, completionHandler: { (data, response, error) in
             DispatchQueue.main.async {

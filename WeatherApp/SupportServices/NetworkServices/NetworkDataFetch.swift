@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: Network Protocol
 protocol NetworkDataFetchProtocol {
     func fetchGenericJSON< T: Decodable >(urlString: String, response: @escaping (T?) -> Void )
 }
@@ -14,14 +15,15 @@ protocol NetworkDataFetchProtocol {
 
 class NetworkDataFetch: NetworkDataFetchProtocol {
     
-    //private property
+    // MARK: Private property
     private var networking: NetworkServiceProtocol
-    //init
+    
+    // MARK: Init
     init(networking: NetworkServiceProtocol = NetworkService() ){
         self.networking = networking
     }
  
-    //func
+    // MARK: Func
     func fetchGenericJSON<T>(urlString: String, response: @escaping (T?) -> Void) where T : Decodable {
         networking.request(urlSring: urlString) { (data, error) in
             if let error = error {
@@ -32,8 +34,6 @@ class NetworkDataFetch: NetworkDataFetchProtocol {
             response(decode)
         }
     }
-    
-   
      func decodeJSONData<T: Decodable>(type: T.Type , from: Data?) -> T? {
         let decoder = JSONDecoder()
         guard let data = from else {

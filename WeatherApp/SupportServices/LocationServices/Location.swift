@@ -5,12 +5,81 @@
 //  Created by Андрей Сорокин on 09.02.2022.
 //
 //
-import Foundation
-import CoreLocation
-
-class Location:  {
-   private let locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
+//import UIKit
+//import CoreLocation
+////
+//class Location: CLLocationManagerDelegate {}
+//   private let locationManager = CLLocationManager()
+//    var currentLocation: CLLocation?
+//
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if !locations.isEmpty, currentLocation == nil  {
+//            currentLocation = locations.first
+//            locationManager.stopUpdatingLocation()
+//            requestWeatherForLocation()
+//        }
+//    }
+//
+//    func requestWeatherForLocation() {
+//        guard let currentLocation = currentLocation else {
+//            return
+//        }
+//        let long = currentLocation.coordinate.longitude
+//        let lat = currentLocation.coordinate.latitude
+//
+//        let url = "https://api.darksky.net/forecast/ddcc4ebb2a7c9930b90d9e59bda0ba7a/\(lat),\(long)?exclude=[flags,minutely]"
+//
+//        URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+//
+//            // Validation
+//            guard let data = data, error == nil else {
+//                print("something went wrong")
+//                return
+//            }
+//
+//            // Convert data to models/some object
+//
+//            var json: WeatherResponse?
+//            do {
+//                json = try JSONDecoder().decode(WeatherResponse.self, from: data)
+//            }
+//            catch {
+//                print("error: \(error)")
+//            }
+//
+//            guard let result = json else {
+//                return
+//            }
+//
+//            let entries = result.daily.data
+//
+//            self.models.append(contentsOf: entries)
+//
+//            let current = result.currently
+//            self.current = current
+//
+//            self.hourlyModels = result.hourly.data
+//
+//            // Update user interface
+//            DispatchQueue.main.async {
+//                self.table.reloadData()
+//
+//                self.table.tableHeaderView = self.createTableHeader()
+//            }
+//
+//        }).resume()
+//    }
+//
+//
+//    func setupLocation() {
+//        locationManager.delegate = self
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
+//    }
+//
+//}
+    
     //var current: CurrentWeather?
     //MARK: -
 
@@ -22,17 +91,17 @@ class Location:  {
 //                weatherManager.fetchWeather(latitude: lat, longitude: lon)
 //            }
 //        }
-    func setupLocation(){
-        locationManager.delegate
-        
-    }
+//    func setupLocation(){
+//        locationManager.delegate
+//
+//    }
+//
+//        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//            print(error)
+//        }
 
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-            print(error)
-        }
 
 
-}
 //class ViewController: UIViewController {
 //
 //

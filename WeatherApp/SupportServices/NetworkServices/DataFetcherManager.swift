@@ -7,22 +7,23 @@
 
 import Foundation
 
+
 class DataFetcherManager {
    
-    
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=a46c70052dee40386f85b6eccd46d998"
-   
+    // MARK: Private property
+    private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=a46c70052dee40386f85b6eccd46d998"
     private var networkDataFetch: NetworkDataFetchProtocol
-    
+    // MARK: Init
     init(networkDataFetch: NetworkDataFetchProtocol = NetworkDataFetch() ) {
         self.networkDataFetch = networkDataFetch
     }
     
  
-
-    func fetchNewGames(urlFull: String ,completion: @escaping (WeatherData?) -> Void) {
-        let urlNewGames = "\(weatherURL)&q=\(urlFull)"
-        networkDataFetch.fetchGenericJSON(urlString: urlNewGames, response: completion)
+    // MARK: Func
+    func fetchNewCity(urlFull: String ,completion: @escaping (WeatherModel?) -> Void) {
+        let urlNewCity = "\(weatherURL)&q=\(urlFull)"
+        networkDataFetch.fetchGenericJSON(urlString: urlNewCity, response: completion)
+        print(urlNewCity)
     }
     
 }
